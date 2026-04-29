@@ -173,6 +173,7 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       * { box-sizing: border-box; }
       body {
@@ -184,7 +185,7 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
       .page { max-width: 1180px; margin: 0 auto; padding: 36px 20px 96px; }
       .hero, .card, .banner, .stat {
         background: ${palette.card};
-        border: ${style === 'neo' ? '3px solid' : '1px solid'} ${palette.border};
+        border: ${style === 'neo' ? '3px solid #000' : '1px solid ' + palette.border};
         border-radius: ${palette.radius};
         box-shadow: ${palette.shadow};
       }
@@ -222,6 +223,7 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
         border-radius: ${style === 'neo' ? '0px' : '16px'};
         background: ${style === 'glass' ? 'rgba(255,255,255,0.06)' : style === 'modern' ? '#f5f3ff' : '#fde047'};
         border: ${style === 'neo' ? '3px solid #000' : '1px solid ' + palette.border};
+        color: ${palette.accent};
       }
       .benefit-item,
       .feature-item {
@@ -253,7 +255,9 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
       p { line-height: 1.7; margin: 0; }
       .muted { opacity: 0.85; }
       .button {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
         margin-top: 24px;
         padding: 14px 22px;
         color: ${style === 'glass' ? '#020617' : '#ffffff'};
@@ -295,6 +299,7 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
       @media (max-width: 980px) {
         .split { grid-template-columns: 1fr; }
       }
+      i { width: 20px; height: 20px; }
     </style>
   </head>
   <body>
@@ -304,7 +309,7 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
         <p class="muted">${escapeHtml(productName)}</p>
         <h1>${escapeHtml(content.headline)}</h1>
         <p class="muted">${escapeHtml(content.subheadline)}</p>
-        <a class="button" href="#cta">${escapeHtml(content.call_to_action)}</a>
+        <a class="button" href="#cta"><i data-lucide="sparkles"></i> ${escapeHtml(content.call_to_action)}</a>
       </section>
       <section class="stats">
         <div class="stat"><strong>Offer</strong><p class="muted">${escapeHtml(productName)}</p></div>
@@ -313,25 +318,27 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
       </section>
       <section class="section-block tight">
         <div class="prose-block">
-          <div class="section-head"><span class="section-icon">✦</span><h2>Product Description</h2></div>
+          <div class="section-head"><span class="section-icon"><i data-lucide="file-badge-2"></i></span><h2>Product Description</h2></div>
           <p>${escapeHtml(content.product_description)}</p>
         </div>
       </section>
       <section class="section-block">
-        <div class="section-head"><span class="section-icon">✦</span><h2>Key Benefits</h2></div>
+        <div class="section-head"><span class="section-icon"><i data-lucide="gem"></i></span><h2>Key Benefits</h2></div>
         <div class="${content.benefits.length % 3 === 0 ? 'grid-3' : content.benefits.length % 2 === 0 ? 'grid-2' : 'grid-3'}">${content.benefits
-          .map((benefit) => {
+          .map((benefit, index) => {
+            const icons = ['gem', 'sparkles', 'badge-check']
+            const icon = icons[index % icons.length]
             if (benefit.includes(':')) {
               const [title, ...descParts] = benefit.split(':')
               const description = descParts.join(':').trim()
-              return `<div class="benefit-item"><div class="section-icon" style="width:42px;height:42px;margin-bottom:18px;">✦</div><h3>${escapeHtml(title)}</h3><p class="muted">${escapeHtml(description)}</p></div>`
+              return `<div class="benefit-item"><div class="section-icon" style="width:42px;height:42px;margin-bottom:18px;"><i data-lucide="${icon}"></i></div><h3>${escapeHtml(title)}</h3><p class="muted">${escapeHtml(description)}</p></div>`
             }
-            return `<div class="benefit-item"><div class="section-icon" style="width:42px;height:42px;margin-bottom:18px;">✦</div><h3>${escapeHtml(benefit)}</h3></div>`
+            return `<div class="benefit-item"><div class="section-icon" style="width:42px;height:42px;margin-bottom:18px;"><i data-lucide="${icon}"></i></div><h3>${escapeHtml(benefit)}</h3></div>`
           })
           .join('')}</div>
       </section>
       <section class="section-block">
-        <div class="section-head"><span class="section-icon">❖</span><h2>Product Features</h2></div>
+        <div class="section-head"><span class="section-icon"><i data-lucide="layers-3"></i></span><h2>Product Features</h2></div>
         <div class="grid-2">${content.features
           .map(
             (feature, index) => `<div class="feature-item"><div class="feature-meta">${index + 1}</div><h3>${escapeHtml(feature.title || 'Feature')}</h3><p class="muted">${escapeHtml(feature.detail || '')}</p></div>`,
@@ -340,11 +347,11 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
       </section>
       <section class="section-block split">
         <div>
-          <div class="prose-block"><div class="section-head"><span class="section-icon">❝</span><h2>Social Proof</h2></div><div class="quote">“</div><blockquote>${escapeHtml(content.social_proof)}</blockquote></div>
+          <div class="prose-block"><div class="section-head"><span class="section-icon"><i data-lucide="message-square-quote"></i></span><h2>Social Proof</h2></div><div class="quote">“</div><blockquote>${escapeHtml(content.social_proof)}</blockquote></div>
         </div>
         <div>
           <div class="offer-panel">
-            <div class="section-head"><span class="section-icon">⚡</span><h2>Pricing</h2></div>
+            <div class="section-head"><span class="section-icon"><i data-lucide="zap"></i></span><h2>Pricing</h2></div>
             <div class="price ${content.pricing.length > 40 ? 'long' : ''}">${escapeHtml(content.pricing)}</div>
             <p class="muted">Simple positioning that keeps the focus on value.</p>
             <a class="button" href="#cta">Get Started</a>
@@ -356,6 +363,9 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
         <p class="muted">Move from idea to launch-ready sales messaging with Pagenie.</p>
       </section>
     </main>
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>`
 }
