@@ -194,13 +194,16 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
       .banner { padding: 40px 32px; text-align: center; margin-top: 56px; }
       .grid-3, .grid-2 { display: grid; gap: 24px; }
       .stats { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 56px; }
-      .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-      .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-      .section-block { margin-top: 64px; }
-      .section-block.tight { margin-top: 48px; }
-      .split { display: grid; gap: 32px; grid-template-columns: minmax(0, 1.1fr) 420px; align-items: start; }
+      .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      @media (max-width: 640px) {
+        .grid-2 { grid-template-columns: 1fr; }
+      }
+      .section-block { margin-top: 80px; }
+      .section-block.tight { margin-top: 64px; }
+      .split { display: grid; gap: 48px; grid-template-columns: minmax(0, 1.1fr) 420px; align-items: start; }
       .prose-block {
-        padding: 32px 0;
+        padding: 40px 0;
         border-top: ${style === 'neo' ? '3px solid #000' : '1px solid ' + palette.border};
         border-bottom: ${style === 'neo' ? '3px solid #000' : '1px solid ' + palette.border};
       }
@@ -246,6 +249,7 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
       }
       h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin: 0 0 12px; }
       h2 { font-size: 1.6rem; margin: 0 0 14px; }
+      h3 { font-size: 1.45rem; margin: 0 0 12px; line-height: 1.3; }
       p { line-height: 1.7; margin: 0; }
       .muted { opacity: 0.82; }
       .button {
@@ -261,7 +265,8 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
         font-weight: 700;
       }
       blockquote { margin: 0; font-size: 1.1rem; font-weight: 600; }
-      .price { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+      .price { font-size: 2rem; font-weight: 800; margin-bottom: 10px; line-height: 1.2; }
+      .price.long { font-size: 1.5rem; }
       ul { margin: 0; padding-left: 22px; }
       .eyebrow {
         display: inline-block;
@@ -313,13 +318,20 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
         </div>
       </section>
       <section class="section-block">
-        <div class="grid-3">${content.benefits
-          .map(
-            (benefit) => `<div class="benefit-item"><div class="section-icon" style="width:42px;height:42px;margin-bottom:18px;">✦</div><h3>${escapeHtml(benefit)}</h3><p class="muted">Designed to make your product more compelling and easier to act on.</p></div>`,
-          )
+        <div class="section-head"><span class="section-icon">✦</span><h2>Key Benefits</h2></div>
+        <div class="${content.benefits.length % 3 === 0 ? 'grid-3' : content.benefits.length % 2 === 0 ? 'grid-2' : 'grid-3'}">${content.benefits
+          .map((benefit) => {
+            if (benefit.includes(':')) {
+              const [title, ...descParts] = benefit.split(':')
+              const description = descParts.join(':').trim()
+              return `<div class="benefit-item"><div class="section-icon" style="width:42px;height:42px;margin-bottom:18px;">✦</div><h3>${escapeHtml(title)}</h3><p class="muted">${escapeHtml(description)}</p></div>`
+            }
+            return `<div class="benefit-item"><div class="section-icon" style="width:42px;height:42px;margin-bottom:18px;">✦</div><h3>${escapeHtml(benefit)}</h3></div>`
+          })
           .join('')}</div>
       </section>
       <section class="section-block">
+        <div class="section-head"><span class="section-icon">❖</span><h2>Product Features</h2></div>
         <div class="grid-2">${content.features
           .map(
             (feature, index) => `<div class="feature-item"><div class="feature-meta">${index + 1}</div><h3>${escapeHtml(feature.title || 'Feature')}</h3><p class="muted">${escapeHtml(feature.detail || '')}</p></div>`,
@@ -331,7 +343,12 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
           <div class="prose-block"><div class="section-head"><span class="section-icon">❝</span><h2>Social Proof</h2></div><div class="quote">“</div><blockquote>${escapeHtml(content.social_proof)}</blockquote></div>
         </div>
         <div>
-          <div class="offer-panel"><div class="section-head"><span class="section-icon">⚡</span><h2>Pricing</h2></div><div class="price">${escapeHtml(content.pricing)}</div><p class="muted">Simple positioning that keeps the focus on value.</p><a class="button" href="#cta">Get Started</a></div>
+          <div class="offer-panel">
+            <div class="section-head"><span class="section-icon">⚡</span><h2>Pricing</h2></div>
+            <div class="price ${content.pricing.length > 40 ? 'long' : ''}">${escapeHtml(content.pricing)}</div>
+            <p class="muted">Simple positioning that keeps the focus on value.</p>
+            <a class="button" href="#cta">Get Started</a>
+          </div>
         </div>
       </section>
       <section class="banner" id="cta" style="background:${palette.banner};">

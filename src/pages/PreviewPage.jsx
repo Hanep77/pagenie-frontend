@@ -236,8 +236,16 @@ function PreviewPage() {
           </div>
         </div>
 
-        <div className="mt-12 md:mt-16">
-          <div className="grid gap-8 xl:grid-cols-3">
+        <div className="mt-20 md:mt-28">
+          <div className="mb-10 flex items-center gap-4">
+            <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${selectedStyle.sectionIcon}`}>
+              <Gem className="h-5 w-5" />
+            </div>
+            <h3 className="max-w-3xl text-3xl font-semibold leading-tight md:text-4xl">
+              Key Benefits
+            </h3>
+          </div>
+          <div className={`grid gap-10 ${content.benefits.length % 3 === 0 ? 'xl:grid-cols-3' : content.benefits.length % 2 === 0 ? 'xl:grid-cols-2' : 'xl:grid-cols-3'}`}>
             {content.benefits.map((benefit, index) => (
               <div key={`${benefit}-${index}`} className={selectedStyle.benefitItem}>
                 <div className={`mb-5 flex h-12 w-12 items-center justify-center rounded-2xl ${selectedStyle.sectionIcon}`}>
@@ -246,19 +254,35 @@ function PreviewPage() {
                     return <Icon className="h-5 w-5" />
                   })()}
                 </div>
-                <h3 className="max-w-xs text-2xl font-semibold leading-tight md:text-[2rem]">
-                  {benefit}
-                </h3>
-                <p className={`mt-4 max-w-sm text-sm leading-7 md:text-base ${selectedStyle.muted}`}>
-                  Crafted to emphasize the result your customer cares about most.
-                </p>
+                {benefit.includes(':') ? (
+                  <>
+                    <h3 className="max-w-md text-xl font-semibold leading-tight md:text-2xl">
+                      {benefit.split(':')[0]}
+                    </h3>
+                    <p className={`mt-4 max-w-sm text-sm leading-7 md:text-base ${selectedStyle.muted}`}>
+                      {benefit.split(':').slice(1).join(':').trim()}
+                    </p>
+                  </>
+                ) : (
+                  <h3 className="max-w-md text-xl font-semibold leading-tight md:text-2xl">
+                    {benefit}
+                  </h3>
+                )}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 md:mt-16">
-          <div className="grid gap-x-10 gap-y-8 lg:grid-cols-2 xl:gap-x-14">
+        <div className="mt-20 md:mt-28">
+          <div className="mb-10 flex items-center gap-4">
+            <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${selectedStyle.sectionIcon}`}>
+              <Layers3 className="h-5 w-5" />
+            </div>
+            <h3 className="max-w-3xl text-3xl font-semibold leading-tight md:text-4xl">
+              Product Features
+            </h3>
+          </div>
+          <div className="grid gap-x-12 gap-y-10 lg:grid-cols-2 xl:gap-x-16">
             {content.features.map((feature, index) => (
               <div key={`${feature.title}-${index}`} className={selectedStyle.featureItem}>
                 <div className={`mb-4 inline-flex h-11 min-w-11 items-center justify-center rounded-full px-3 text-sm font-bold ${selectedStyle.numberBadge}`}>
@@ -273,8 +297,8 @@ function PreviewPage() {
           </div>
         </div>
 
-        <div className="mt-14 md:mt-20">
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.1fr)_420px] xl:items-start">
+        <div className="mt-20 md:mt-32">
+          <div className="grid gap-12 xl:grid-cols-[minmax(0,1.1fr)_420px] xl:items-start">
             <div>
               <div className={selectedStyle.proseBlock}>
                 <div className="mb-4 flex items-center gap-3">
@@ -301,7 +325,7 @@ function PreviewPage() {
                   <h3 className="text-2xl font-semibold">Pricing</h3>
                 </div>
                 <div className="mt-5">
-                  <p className={`text-4xl font-bold md:text-5xl ${selectedStyle.accentText}`}>{content.pricing}</p>
+                  <p className={`font-bold leading-tight ${content.pricing.length > 40 ? 'text-2xl md:text-3xl' : 'text-3xl md:text-5xl'} ${selectedStyle.accentText}`}>{content.pricing}</p>
                   <p className={`mt-4 max-w-2xl text-sm leading-7 md:text-base ${selectedStyle.muted}`}>
                     Present the offer clearly and keep the next action obvious.
                   </p>
@@ -317,10 +341,10 @@ function PreviewPage() {
           </div>
         </div>
 
-        <div className="mt-16 md:mt-24">
-          <div className={`p-8 md:p-10 text-center ${selectedStyle.banner}`}>
-            <h3 className="text-3xl font-semibold md:text-4xl">{content.call_to_action}</h3>
-            <p className={`mx-auto mt-4 max-w-2xl text-sm leading-7 md:text-base ${style === 'modern' ? 'text-violet-100' : selectedStyle.muted}`}>
+        <div className="mt-24 md:mt-32">
+          <div className={`p-10 md:p-16 text-center ${selectedStyle.banner}`}>
+            <h3 className="text-3xl font-semibold md:text-5xl">{content.call_to_action}</h3>
+            <p className={`mx-auto mt-6 max-w-2xl text-base leading-7 md:text-lg ${style === 'modern' ? 'text-violet-100' : selectedStyle.muted}`}>
               Turn your idea into a polished, conversion-focused sales page with PageCraft AI.
             </p>
           </div>
