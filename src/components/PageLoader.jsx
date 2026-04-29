@@ -8,7 +8,7 @@ function PageLoader({ message = 'Preparing your workspace...' }) {
           P
         </div>
         <LoadingSpinner className="mx-auto h-12 w-12" />
-        <h1 className="mt-5 text-2xl font-semibold text-[var(--text)]">PageCraft AI</h1>
+        <h1 className="mt-5 text-2xl font-semibold text-[var(--text)]">Pagenie</h1>
         <p className="mt-2 text-sm text-[var(--text-muted)]">{message}</p>
       </div>
     </div>

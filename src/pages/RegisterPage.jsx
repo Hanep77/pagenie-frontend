@@ -55,7 +55,7 @@ function RegisterPage() {
         token: payload.access_token,
       })
 
-      toast.success(`Welcome to PageCraft AI, ${payload.user.name}!`)
+      toast.success(`Welcome to Pagenie, ${payload.user.name}!`)
       navigate('/dashboard', { replace: true })
     } catch (error) {
       const message =
@@ -82,7 +82,7 @@ function RegisterPage() {
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--accent)] text-xl font-bold text-white">
             P
           </div>
-          <h1 className="text-3xl font-semibold text-[var(--text)]">PageCraft AI</h1>
+          <h1 className="text-3xl font-semibold text-[var(--text)]">Pagenie</h1>
           <p className="mt-2 text-sm text-[var(--text-muted)]">
             Create your account and start generating polished sales pages.
           </p>

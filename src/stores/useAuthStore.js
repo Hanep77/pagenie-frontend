@@ -20,7 +20,7 @@ const useAuthStore = create(
       },
     }),
     {
-      name: 'pagecraft-auth',
+      name: 'pagenie-auth',
     },
   ),
 )

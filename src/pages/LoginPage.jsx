@@ -73,7 +73,7 @@ function LoginPage() {
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--accent)] text-xl font-bold text-white">
             P
           </div>
-          <h1 className="text-3xl font-semibold text-[var(--text)]">PageCraft AI</h1>
+          <h1 className="text-3xl font-semibold text-[var(--text)]">Pagenie</h1>
           <p className="mt-2 text-sm text-[var(--text-muted)]">
             Sign in to generate high-converting AI sales pages.
           </p>

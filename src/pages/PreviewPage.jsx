@@ -345,8 +345,7 @@ function PreviewPage() {
           <div className={`p-10 md:p-16 text-center ${selectedStyle.banner}`}>
             <h3 className="text-3xl font-semibold md:text-5xl">{content.call_to_action}</h3>
             <p className={`mx-auto mt-6 max-w-2xl text-base leading-7 md:text-lg ${style === 'modern' ? 'text-violet-100' : selectedStyle.muted}`}>
-              Turn your idea into a polished, conversion-focused sales page with PageCraft AI.
-            </p>
+              Turn your idea into a polished, conversion-focused sales page with Pagenie.            </p>
           </div>
         </div>
       </section>

@@ -7,11 +7,11 @@ const api = axios.create({
 })
 
 export const clearStoredAuth = () => {
-  localStorage.removeItem('pagecraft-auth')
+  localStorage.removeItem('pagenie-auth')
 }
 
 api.interceptors.request.use((config) => {
-  const persistedAuth = localStorage.getItem('pagecraft-auth')
+  const persistedAuth = localStorage.getItem('pagenie-auth')
 
   if (persistedAuth) {
     try {

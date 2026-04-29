@@ -1,8 +1,8 @@
-const sanitizeFileName = (value = 'pagecraft') =>
+const sanitizeFileName = (value = 'pagenie') =>
   value
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '') || 'pagecraft'
+    .replace(/^-+|-+$/g, '') || 'pagenie'
 
 export const downloadFile = ({ content, filename, type }) => {
   const blob = new Blob([content], { type })

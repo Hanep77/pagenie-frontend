@@ -353,7 +353,7 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
       </section>
       <section class="banner" id="cta" style="background:${palette.banner};">
         <h2>${escapeHtml(content.call_to_action)}</h2>
-        <p class="muted">Move from idea to launch-ready sales messaging with PageCraft AI.</p>
+        <p class="muted">Move from idea to launch-ready sales messaging with Pagenie.</p>
       </section>
     </main>
   </body>

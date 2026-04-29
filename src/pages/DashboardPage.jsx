@@ -118,7 +118,7 @@ function DashboardPage() {
           </div>
           <h2 className="text-2xl font-semibold text-[var(--text)]">No pages yet. Generate your first one!</h2>
           <p className="mt-3 text-sm text-[var(--text-muted)]">
-            Start with a product idea and PageCraft AI will draft the structure for you.
+            Start with a product idea and Pagenie will draft the structure for you.
           </p>
         </div>
       ) : (

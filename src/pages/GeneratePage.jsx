@@ -102,7 +102,7 @@ function GeneratePage() {
           <p className="text-sm font-medium text-[var(--accent)]">Generate</p>
           <h1 className="mt-2 text-3xl font-semibold text-[var(--text)]">Create your next sales page</h1>
           <p className="mt-3 text-sm text-[var(--text-muted)]">
-            Fill in the product details and let PageCraft AI shape the structure, messaging, and CTA.
+            Fill in the product details and let Pagenie shape the structure, messaging, and CTA.
           </p>
         </div>
 

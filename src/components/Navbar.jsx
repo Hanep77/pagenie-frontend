@@ -22,7 +22,7 @@ function Navbar() {
             P
           </div>
           <div>
-            <p className="text-base font-semibold text-[var(--text)]">PageCraft AI</p>
+            <p className="text-base font-semibold text-[var(--text)]">Pagenie</p>
             <p className="text-xs text-[var(--text-muted)]">AI Sales Page Generator</p>
           </div>
         </Link>
