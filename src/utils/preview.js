@@ -24,7 +24,7 @@ export const PREVIEW_STYLES = {
     featureItem: 'border-t border-slate-200 pt-6',
     splitPanel: 'rounded-[30px] border border-slate-200/80 bg-white/92 p-8 shadow-[0_18px_45px_-32px_rgba(15,23,42,0.2)]',
     sectionIcon:
-      'border border-violet-100 bg-violet-50 text-violet-700 shadow-[0_12px_30px_-24px_rgba(124,58,237,0.45)]',
+      'border border-violet-100/50 bg-violet-50/50 text-violet-700 shadow-[0_12px_30px_-24px_rgba(124,58,237,0.45)]',
     numberBadge: 'bg-violet-50 text-violet-700 ring-1 ring-violet-100',
     fontClass: 'font-sans',
   },
@@ -41,7 +41,7 @@ export const PREVIEW_STYLES = {
     accentText: 'text-sky-300',
     accentBg:
       'bg-sky-400 text-slate-950 shadow-[0_0_35px_rgba(56,189,248,0.45)] hover:bg-sky-300',
-    muted: 'text-slate-300',
+    muted: 'text-slate-200',
     featureCard: 'border border-white/10 bg-white/[0.04]',
     banner:
       'rounded-[30px] border border-sky-300/20 bg-[linear-gradient(135deg,rgba(56,189,248,0.18),rgba(15,23,42,0.4))] text-white shadow-[0_0_40px_rgba(56,189,248,0.18)] backdrop-blur-2xl',
@@ -247,11 +247,11 @@ export const buildPreviewHtml = ({ productName, output, style }) => {
         border-radius: ${palette.radius};
         box-shadow: ${palette.shadow};
       }
-      h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin: 0 0 12px; }
-      h2 { font-size: 1.6rem; margin: 0 0 14px; }
-      h3 { font-size: 1.45rem; margin: 0 0 12px; line-height: 1.3; }
+      h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin: 0 0 12px; letter-spacing: -0.03em; }
+      h2 { font-size: 1.6rem; margin: 0 0 14px; letter-spacing: -0.02em; }
+      h3 { font-size: 1.45rem; margin: 0 0 12px; line-height: 1.3; letter-spacing: -0.01em; }
       p { line-height: 1.7; margin: 0; }
-      .muted { opacity: 0.82; }
+      .muted { opacity: 0.85; }
       .button {
         display: inline-block;
         margin-top: 24px;

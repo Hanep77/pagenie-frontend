@@ -176,7 +176,7 @@ function PreviewPage() {
               <p className={`mt-5 text-sm font-semibold uppercase tracking-[0.24em] ${selectedStyle.accentText}`}>
                 {currentPage.product_name}
               </p>
-              <h2 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight md:text-6xl">
+              <h2 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
                 {content.headline}
               </h2>
               <p className={`mt-4 max-w-3xl text-base leading-7 md:text-lg ${selectedStyle.muted}`}>
@@ -225,7 +225,7 @@ function PreviewPage() {
                 <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${selectedStyle.sectionIcon}`}>
                   <DescriptionIcon className="h-5 w-5" />
                 </div>
-                <h3 className="max-w-3xl text-3xl font-semibold leading-tight md:text-4xl">
+                <h3 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
                   Product Description
                 </h3>
               </div>
@@ -241,7 +241,7 @@ function PreviewPage() {
             <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${selectedStyle.sectionIcon}`}>
               <Gem className="h-5 w-5" />
             </div>
-            <h3 className="max-w-3xl text-3xl font-semibold leading-tight md:text-4xl">
+            <h3 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
               Key Benefits
             </h3>
           </div>
@@ -256,7 +256,7 @@ function PreviewPage() {
                 </div>
                 {benefit.includes(':') ? (
                   <>
-                    <h3 className="max-w-md text-xl font-semibold leading-tight md:text-2xl">
+                    <h3 className="max-w-md text-xl font-semibold leading-tight tracking-tight md:text-2xl">
                       {benefit.split(':')[0]}
                     </h3>
                     <p className={`mt-4 max-w-sm text-sm leading-7 md:text-base ${selectedStyle.muted}`}>
@@ -264,7 +264,7 @@ function PreviewPage() {
                     </p>
                   </>
                 ) : (
-                  <h3 className="max-w-md text-xl font-semibold leading-tight md:text-2xl">
+                  <h3 className="max-w-md text-xl font-semibold leading-tight tracking-tight md:text-2xl">
                     {benefit}
                   </h3>
                 )}
@@ -278,7 +278,7 @@ function PreviewPage() {
             <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${selectedStyle.sectionIcon}`}>
               <Layers3 className="h-5 w-5" />
             </div>
-            <h3 className="max-w-3xl text-3xl font-semibold leading-tight md:text-4xl">
+            <h3 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
               Product Features
             </h3>
           </div>
@@ -288,7 +288,7 @@ function PreviewPage() {
                 <div className={`mb-4 inline-flex h-11 min-w-11 items-center justify-center rounded-full px-3 text-sm font-bold ${selectedStyle.numberBadge}`}>
                   {index + 1}
                 </div>
-                <h3 className="text-2xl font-semibold leading-tight md:text-3xl">{feature.title}</h3>
+                <h3 className="text-2xl font-semibold leading-tight tracking-tight md:text-3xl">{feature.title}</h3>
                 <p className={`mt-4 max-w-xl text-sm leading-7 md:text-base ${selectedStyle.muted}`}>
                   {feature.detail}
                 </p>
